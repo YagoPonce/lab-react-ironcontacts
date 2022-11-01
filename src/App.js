@@ -55,6 +55,22 @@ const randomPerson = () => {
     setPersonList(copyPersonList)
   }
 
+
+
+                                //iteración 5
+    const deleteContact = (eachPerson) => {
+      const contactList = personList.filter((eachPersonList) => {
+        if (eachPersonList.id === eachPerson) {
+          return false
+        } else {
+          return true
+        }
+      })
+      setPersonList(contactList)
+    }
+
+
+
   return (
   
     <div className="App">
@@ -74,14 +90,15 @@ const randomPerson = () => {
         </thead>
 {personList.map((eachPerson) => {
     return (
-      <tbody>
+      <tbody key={eachPerson.id}>
       <tr> 
-      <td><img src={eachPerson.pictureUrl} atl="celebrity" class="actorImg"/></td>
+      <td><img src={eachPerson.pictureUrl} atl="celebrity" className="actorImg"/></td>
       <td>{eachPerson.name}</td>
       <td>{eachPerson.popularity.toFixed(2)}</td>
       <td>{eachPerson.wonOscar === true && "🏆"}</td>
       <td>{eachPerson.wonEmmy === true && "🏆"}</td>
     </tr>
+    <button onClick={() => deleteContact(eachPerson.id)}>Delete</button>
     </tbody>
 
    
